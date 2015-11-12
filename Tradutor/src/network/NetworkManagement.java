@@ -4,24 +4,23 @@ import java.util.List;
 
 import org.json.JSONException;
 
-import ui.TraducaoUI;
+import Entidades.Palavra;
+
 import util.Traducao;
 
 public class NetworkManagement {
 
-	public static void traduzir(String palavra) throws JSONException {
+	public static Palavra traduzir(Palavra p) throws JSONException {
 
-		String json = Traducao.getData(palavra);
+		String json = Traducao.getData(p);
 
 		List<String> palavrasTraduzidas = Traducao.parseJson(json);
 
-		TranslateListener tl = new TraducaoUI();
-
-		Dispatcher.getInstance().registrarEvento(tl);
+		p.setPalavra2(palavrasTraduzidas.get(0));
 		
-		
+		return p;
+	
 
-		Dispatcher.getInstance().dispatchEvent(palavrasTraduzidas);
 	}
 
 }

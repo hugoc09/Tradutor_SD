@@ -12,13 +12,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import Entidades.Palavra;
+
 import java.util.ArrayList;
 import java.util.List;
 public class Traducao {
 
-	public static final String URL1 = "https://www.googleapis.com/language/translate/v2?key=AIzaSyC2-Ruvk61nvaGbb0428TJl85kBFwAN510&q=";
-	public static final String URL2 = "&source=pt&target=en";
-	
+	public static final String URL_Palavra = "https://www.googleapis.com/language/translate/v2?key=AIzaSyC2-Ruvk61nvaGbb0428TJl85kBFwAN510&q=";
+	public static final String URL_Language1 = "&source=";
+	public static final String URL_Language2 = "&target=";
 	/**
 	 * 
 	 * Método que extraí de uma string JSON a palavra traduzida
@@ -54,9 +56,9 @@ public class Traducao {
 	 * @return uma String JSON
 	 */
 
-	public static String getData(String palavra) {
+	public static String getData(Palavra p) {
 
-		String urlString = URL1 +palavra+URL2;
+		String urlString = URL_Palavra +p.getPalavra1()+ URL_Language1+ p.getLinguagem1() + URL_Language2 + p.getLinguagem2();
 		String r = "";
 		try {
 
